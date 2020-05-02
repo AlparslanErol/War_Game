@@ -1,0 +1,21 @@
+﻿  Manager.cpp
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(128,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(128,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(129,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(130,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(130,27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(141,36): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(141,26): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(147,44): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(147,29): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(149,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(149,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(149,35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(149,25): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(157,44): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(157,29): warning C4244: 'argument': conversion from 'double' to 'int32_t', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(163,81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(163,62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(163,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ALPARSLAN\Desktop\IE 201 Project\Manager.cpp(163,25): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ShootingGame.vcxproj -> C:\Users\ALPARSLAN\Desktop\IE 201 Project\x64\Debug\ShootingGame.exe

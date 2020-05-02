@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>Enemy.cpp</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>31</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Enemy::OnUserUpdate</FUNCTION>
+    <DECORATED>?OnUserUpdate@Enemy@@QEAA_NM@Z</DECORATED>
+    <FUNCLINE>26</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>Manager.cpp</FILENAME>
+      <LINE>167</LINE>
+      <COLUMN>18</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Manager::DrawHPBar</FUNCTION>
+    <DECORATED>?DrawHPBar@Manager@@QEAAXHHHH@Z</DECORATED>
+    <FUNCLINE>163</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.h</FILENAME>
+      <LINE>428</LINE>
+      <COLUMN>34</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'olc::Pixel::Mode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::{ctor}</FUNCTION>
+    <DECORATED>??0PixelGameEngine@olc@@QEAA@XZ</DECORATED>
+    <FUNCLINE>57</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>82</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'olc::rcode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::Construct</FUNCTION>
+    <DECORATED>?Construct@PixelGameEngine@olc@@QEAA?AW4rcode@2@IIII@Z</DECORATED>
+    <FUNCLINE>63</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>148</LINE>
+      <COLUMN>27</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'olc::Key' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::GetKey</FUNCTION>
+    <DECORATED>?GetKey@PixelGameEngine@olc@@QEAA?AUHWButton@2@W4Key@2@@Z</DECORATED>
+    <FUNCLINE>148</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>808</LINE>
+      <COLUMN>36</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::olc_ConstructFontSheet</FUNCTION>
+    <DECORATED>?olc_ConstructFontSheet@PixelGameEngine@olc@@AEAAXXZ</DECORATED>
+    <FUNCLINE>783</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>809</LINE>
+      <COLUMN>36</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::olc_ConstructFontSheet</FUNCTION>
+    <DECORATED>?olc_ConstructFontSheet@PixelGameEngine@olc@@AEAAXXZ</DECORATED>
+    <FUNCLINE>783</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>810</LINE>
+      <COLUMN>36</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>olc::PixelGameEngine::olc_ConstructFontSheet</FUNCTION>
+    <DECORATED>?olc_ConstructFontSheet@PixelGameEngine@olc@@AEAAXXZ</DECORATED>
+    <FUNCLINE>783</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.h</FILENAME>
+      <LINE>314</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'olc::Sprite::Mode' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>olc::Sprite::{ctor}</FUNCTION>
+    <DECORATED>??0Sprite@olc@@QEAA@XZ</DECORATED>
+    <FUNCLINE>982</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>1022</LINE>
+      <COLUMN>34</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>olc::Sprite::LoadFromPGESprFile::&lt;lambda_5887081053998f1f4aad031983a6dd3d&gt;::()</FUNCTION>
+    <DECORATED>??R&lt;lambda_5887081053998f1f4aad031983a6dd3d&gt;@@QEBAXAEAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z</DECORATED>
+    <FUNCLINE>1023</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.cpp</FILENAME>
+      <LINE>1059</LINE>
+      <COLUMN>36</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>olc::Sprite::SaveToPGESprFile</FUNCTION>
+    <DECORATED>?SaveToPGESprFile@Sprite@olc@@QEAA?AW4rcode@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>1049</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\ALPARSLAN\Desktop\IE 201 Project\</FILEPATH>
+      <FILENAME>olcSimpleEngine.h</FILENAME>
+      <LINE>265</LINE>
+      <COLUMN>139</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'olc::ResourcePack::sEntry::nID' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>olc::ResourcePack::sEntry::{ctor}</FUNCTION>
+    <DECORATED>??0sEntry@ResourcePack@olc@@QEAA@XZ</DECORATED>
+    <FUNCLINE>265</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>olc::ResourcePack::sEntry::nID</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>
