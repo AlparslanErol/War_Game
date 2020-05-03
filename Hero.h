@@ -11,7 +11,6 @@ private:
     double hpmax;
     double hpcurr;
 
-
 public:
     Hero();
     ~Hero();
@@ -21,12 +20,16 @@ public:
 
     double getX();
     double setX(double _);
+
     double getY();
     double setY(double _);
+    
     double getHeroSpeed();
     double setHeroSpeed(double _);
+    
     double getHpMax();
     double setHpMax(double _);
+    
     double getHpCurr();
     double setHpCurr(double _);
 };

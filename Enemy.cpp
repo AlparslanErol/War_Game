@@ -1,21 +1,25 @@
 #include "Enemy.h"
 
-Enemy::Enemy(double xIn, double yIn, double speedIn, double damageIn, double hpIn) {
-
+Enemy::Enemy(double xIn, double yIn, double speedIn, double damageIn, double hpIn, Hero *heroIn, Bullet* bulletIn, Bonus *bonusIn) {
     x = xIn;
     y = yIn;
     speed = speedIn;
     damage = damageIn;
     hpmax = hpIn;
     hp = hpmax;
-    spawnRate = 5;
+    hero = heroIn;
+    bullet = bulletIn;
+    bonus = bonusIn;
+
+    spawnRate = 4;
     spawnCD = 0;
+
     attackCD = 0;
     attackrate = 2;
 
-    enemies = vector<Enemy>();
-    zombieSprite = shared_ptr<olc::Sprite>();
-    zombieSprite = make_shared<olc::Sprite>("Sprites/zombie->png");
+    enemies = std::vector<Enemy>();
+    zombieSprite = std::shared_ptr<olc::Sprite>();
+    zombieSprite = make_shared<olc::Sprite>("Sprites/zombie.png");
 }
 
 Enemy::~Enemy() {
@@ -30,20 +34,21 @@ bool Enemy::OnUserUpdate(float fElapsedTime) {
     if (spawnCD <= 0)
     {
         double degree = rand() * 360;
-        enemies.push_back(Enemy((cos(degree) * Manager::WIDTH) + (Manager::WIDTH / 2), (sin(degree) * Manager::HEIGHT) + (Manager::HEIGHT / 2), 50, 10, 10));
+        enemies.push_back(Enemy((cos(degree) * Manager::WIDTH) + (Manager::WIDTH / 2), (sin(degree) * Manager::HEIGHT) + (Manager::HEIGHT / 2), 50, 10, 10, hero, bullet, bonus));
         spawnCD = spawnRate;
     }
     //ZOMBIE SPAWNS
-    
+
+
     //BULLETSHIT 
-    
+
     for (int i = 0; i < bullet->bullets.size(); ++i)
     {
-        for (int j = 0; j < enemies.size(); ++j)
+        for (int j = 0; j < 1; ++j)
         {
             if (distance(bullet->bullets[i].getX(), bullet->bullets[i].getY(), enemies[j].x, enemies[j].y) < 10)
             {
-                 
+
                 enemies[j].hp -= bullet->bullets[i].getDamage();
                 bullet->bullets.erase(bullet->bullets.begin() + i);
                 i--;
@@ -53,7 +58,7 @@ bool Enemy::OnUserUpdate(float fElapsedTime) {
 
                     if (rand() % 5 < 1) {
 
-                        bonus->bonuses.push_back(Bonus(enemies[j].x, enemies[j].y));
+                        bonus->bonuses.push_back(Bonus(enemies[j].x, enemies[j].y, hero));
                     }
                     //RANDOM BONUS CREATION
 
@@ -67,14 +72,16 @@ bool Enemy::OnUserUpdate(float fElapsedTime) {
     //BULLETSHIT
 
 
-     //ENEMIESMOVE
+    //ENEMIESMOVE
     for (int i = 0; i < enemies.size(); ++i)
     {
-        double dirX = hero->getX() - enemies[i].getX();
-        double dirY = hero->getY() - enemies[i].getY();
+        double dirX = hero->getX() - enemies[i].x;
+        double dirY = hero->getY() - enemies[i].y;
         double dist = sqrt((dirX * dirX) + (dirY * dirY));
+
         enemies[i].x += dirX / dist * enemies[i].speed * fElapsedTime;
         enemies[i].y += dirY / dist * enemies[i].speed * fElapsedTime;
+
         if (enemies[i].hp <= 0)
         {
             enemies.erase(enemies.begin() + i);
@@ -89,7 +96,7 @@ bool Enemy::OnUserUpdate(float fElapsedTime) {
     {
         enemies[i].attackCD -= fElapsedTime;
 
-        if ((distance(enemies[i].x, enemies[i].y, x, y) <= 8) && (enemies[i].attackCD <= 0))
+        if ((distance(enemies[i].x, enemies[i].y, hero->getX(), hero->getY()) <= 8) && (enemies[i].attackCD <= 0))
         {
             hero->setHpCurr(hero->getHpCurr() - enemies[i].damage);
             enemies[i].attackCD = enemies[i].attackrate;
@@ -100,68 +107,64 @@ bool Enemy::OnUserUpdate(float fElapsedTime) {
     return true;
 }
 
-double Enemy::distance(double x1, double y1, double x2, double y2)
-{
+double Enemy::distance(double x1, double y1, double x2, double y2) {
     return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }
 
 double Enemy::getX() {
     return x;
 }
-
 double Enemy::getY() {
     return y;
 }
-
 double Enemy::getEnemySpeed() {
     return speed;
 }
-
 double Enemy::getHpMax() {
     return hpmax;
 }
-
 double Enemy::getHpCurr() {
     return hp;
 }
-
 double Enemy::setX(double _) {
     return x = _;
 }
-
 double Enemy::setY(double _) {
     return y = _;
 }
-
 double Enemy::setEnemySpeed(double _) {
     return speed = _;
 }
-
 double Enemy::setHpMax(double _) {
     return hpmax = _;
 }
-
 double Enemy::setHpCurr(double _) {
     return hp = _;
 }
-
 double Enemy::getSpawnRate() {
     return spawnRate;
 }
-
 double Enemy::getHpSpawnCD() {
     return spawnCD;
 }
-
 double Enemy::setSpawnRate(double _) {
     return spawnRate = _;
 }
-
 double Enemy::setHpSpawnCD(double _) {
     return spawnCD = _;
 }
-
-double Enemy::getEnemyDamage()
-{
+double Enemy::getEnemyDamage() {
     return damage;
+}
+double Enemy::getAttackCD() {
+    return attackCD;
+}
+double Enemy::setAttackCD(double _) {
+    return attackCD = _;
+}
+double Enemy::getAttackRate() {
+    return attackrate;
+}
+double Enemy::setAttackRate(double _) {
+    return attackrate = _;
 }

@@ -6,6 +6,7 @@
 #include "Bullet.h"
 #include "Bonus.h"
 #include "Enemy.h"
+#include "Background.h"
 
 #define PI 3.14159265359
 using namespace std;
@@ -13,21 +14,22 @@ using namespace std;
 
 class Manager : public olc::PixelGameEngine {
 
-	class Hero * hero;
-	class Bullet * bullet;
-	class Bonus * bonus;
-	class Enemy * enemy;
-
+private:
 	int level;
 	double gameTime;
 	bool gameEnd;
 
-public:
-	std::shared_ptr<olc::Sprite> deadSprite;
-	std::vector<shared_ptr<olc::Sprite>> levelSprites;
+	class Hero* hero;
+	class Bullet* bullet;
+	class Bonus* bonus;
+	class Enemy* enemy;
+	class Background* frame;
 
+public:
 	Manager();
 	~Manager();
+
+	std::shared_ptr<olc::Sprite> deadSprite;
 
 	const static int WIDTH = 240;
 	const static int HEIGHT = 240;

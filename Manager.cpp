@@ -1,34 +1,44 @@
 #include "Manager.h"
 
 Manager::Manager() {
-
 }
 
 Manager::~Manager() {
-    delete this;
 }
 
+
+void Manager::DrawHPBar(int x, int y, int HPMax, int HPCurrent)
+{
+    double ratio = (double)(HPCurrent) / (double)HPMax;
+    for (int i = x - 5; i < 5 + x; ++i)
+        if (i < x - 5 + ratio * 10)
+            DrawRect(i, y + 14, 1, 1, olc::GREEN);
+        else
+            DrawRect(i, y + 14, 1, 1, olc::RED);
+}
+
+
 bool Manager::OnUserCreate() {
-    cout << "asdsadasdasdas" << endl;
 
-    enemy = new Enemy(0, 0, 0, 0, 0);
-    bullet = new Bullet(0, 0, 0, 0, 0, 0);
-    bonus = new Bonus(0, 0);
+    double degree = rand() * 360;
+
+    frame = new Background();
     hero = new Hero();
+    bonus = new Bonus(0, 0, hero);
+    bullet = new Bullet(0, 0, 0, 0, 0, 0);
+    enemy = new Enemy((cos(degree) * WIDTH) + (WIDTH / 2), (sin(degree) * HEIGHT) + (HEIGHT / 2), 50, 10, 10, hero, bullet, bonus);
 
-    deadSprite = shared_ptr<olc::Sprite>();
-    levelSprites = std::vector<shared_ptr<olc::Sprite>>();
-    deadSprite = make_shared<olc::Sprite>("Sprites/Dead->png");
-    for (int i = 0; i < 7; ++i)
-        levelSprites.push_back(make_shared<olc::Sprite>("Sprites/Level" + to_string(i + 1) + "->png"));
+    deadSprite = std::shared_ptr<olc::Sprite>();
+    deadSprite = make_shared<olc::Sprite>("Sprites/Dead.png");
 
     gameTime = 0;
     gameEnd = false;
     level = 0;
-    srand(NULL);
 
+    srand(NULL);
     return true;
 }
+
 
 bool Manager::OnUserUpdate(float fElapsedTime) {
 
@@ -37,14 +47,12 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
     bullet->OnUserUpdate(fElapsedTime);
     enemy->OnUserUpdate(fElapsedTime);
 
-
     if (gameEnd) {
         DrawSprite(0, 0, deadSprite, 1);
-        DrawString(ScreenWidth() / 2 - 38, ScreenHeight() / 2 - 10, "GAMEeeeeeeeeeeeeeeee OVER", olc::DARK_RED);
+        DrawString(ScreenWidth() / 2 - 38, ScreenHeight() / 2 - 10, "GAME OVER", olc::DARK_RED);
         DrawString(ScreenWidth() / 2 - 38, ScreenHeight() / 2, "Try again?", olc::BLACK);
         DrawString(ScreenWidth() / 2 - 35, ScreenHeight() / 2 + 10, "Press Y", olc::BLACK);
         DrawString(ScreenWidth() / 2 - 55, ScreenHeight() / 2 + 20, "Press N to exit", olc::BLACK);
-
 
         if (GetKey(olc::Y).bPressed)
         {
@@ -57,8 +65,10 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
         return true;
     }
 
+
     gameTime += fElapsedTime;
     level = int(gameTime / 10) % 7 + 1;
+
 
     //SHOOTING
     if (GetKey(olc::SPACE).bPressed)
@@ -90,9 +100,9 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
     if (hero->getX() >= ScreenWidth()) { hero->setX(ScreenHeight()); }
     //KEEP HERO IN WINDOW
 
+
     // If HP is less than 0 or if you press E end game
     if (hero->getHpCurr() <= 0 || GetKey(olc::E).bReleased) {
-
         for (int i = 0; i < enemy->enemies.size(); i++)
         {
             enemy->enemies.erase(enemy->enemies.begin());
@@ -105,24 +115,21 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
             i--;
         }
 
-
         for (int i = 0; i < bonus->bonuses.size(); i++)
         {
             bonus->bonuses.erase(bonus->bonuses.begin());
             i--;
         }
-
         gameEnd = true;
     }
     //TO BE IMPLEMENTED
     //CHECKGAMEOVER
 
 
-        //DRAWING
-    
+    //DRAWING
     //THE PLAYER
     Clear(olc::BLACK);
-    //DrawSprite(0, 0, levelSprites[level - 1], 1);
+    DrawSprite(0, 0, frame->levelSprites[level - 1], 1);
     SetPixelMode(olc::Pixel::ALPHA);
     olc::GFX2D::Transform2D t;
     t.Translate(-hero->manSprite->width / 2, -hero->manSprite->height / 2);
@@ -131,10 +138,12 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
     olc::GFX2D::DrawSprite(hero->manSprite.get(), t);
     //THE PLAYER
 
+
      //CROSSHAIR
     DrawLine(GetMouseX() - 5, GetMouseY(), GetMouseX() + 5, GetMouseY(), olc::RED);
     DrawLine(GetMouseX(), GetMouseY() - 5, GetMouseX(), GetMouseY() + 5, olc::RED);
     //CROSSHAIR
+
 
     //DRAW BULLETS
     for (auto a : bullet->bullets)
@@ -166,14 +175,4 @@ bool Manager::OnUserUpdate(float fElapsedTime) {
     //DRAWING
 
     return true;
-}
-
-void Manager::DrawHPBar(int x, int y, int HPMax, int HPCurrent)
-{
-    double ratio = (double)(HPCurrent) / (double)HPMax;
-    for (int i = x - 5; i < 5 + x; ++i)
-        if (i < x - 5 + ratio * 10)
-            DrawRect(i, y + 14, 1, 1, olc::GREEN);
-        else
-            DrawRect(i, y + 14, 1, 1, olc::RED);
 }

@@ -406,6 +406,5 @@ int main()
     if (game.Construct(240,240,3,3))
         game.Start();
   
-
     return 0;
 }

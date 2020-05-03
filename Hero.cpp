@@ -8,12 +8,12 @@ Hero::Hero() {
 	hpmax = 100;
 	hpcurr = 50;
 
-	manSprite = shared_ptr<olc::Sprite>();
+	manSprite = std::shared_ptr<olc::Sprite>();
 	manSprite = make_shared<olc::Sprite>("Sprites/ManTrans.png");
 }
 
 Hero::~Hero() {
-	delete this;
+	
 }
 
 
@@ -25,36 +25,29 @@ double Hero::getX() {
 	return x;
 }
 double Hero::getY() {
-	return y;
+   	return y;
 }
-
 double Hero::getHeroSpeed() {
 	return heroSpeed;
 }
-
 double Hero::getHpMax() {
 	return hpmax;
 }
-
 double Hero::getHpCurr() {
 	return hpcurr;
 }
-
 double Hero::setX(double _) {
 	return x = _;
 }
 double Hero::setY(double _) {
 	return y = _;
 }
-
 double Hero::setHeroSpeed(double _) {
 	return heroSpeed = _;
 }
-
 double Hero::setHpMax(double _) {
 	return hpmax = _;
 }
-
 double Hero::setHpCurr(double _) {
 	return hpcurr = _;
 }

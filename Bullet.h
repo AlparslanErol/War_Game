@@ -12,7 +12,6 @@ private:
     double speed;
     double damage;
 
-
 public:
     Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double speedIn, double damageIn);
     ~Bullet();

@@ -7,11 +7,11 @@ Bullet::Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double spee
     dirY = dirYIn;
     speed = speedIn;
     damage = damageIn;
-    bullets = vector<Bullet>();
+    bullets = std::vector<Bullet>();
 }
 
 Bullet::~Bullet() {
-    delete this;
+
 }
 
 
@@ -29,54 +29,43 @@ bool Bullet::OnUserUpdate(float fElapsedTime) {
         }
     }
     //BULLETSMOVE
+
     return true;
 }
-
 
 double Bullet::getX() {
     return x;
 }
-
 double Bullet::getY() {
     return y;
 }
-
 double Bullet::setX(double _) {
     return x = _;
 }
-
 double Bullet::setY(double _) {
     return y = _;
 }
-
 double Bullet::getDamage() {
     return damage;
 }
-
 double Bullet::setDamage(double _) {
     return damage = _;
 }
-
 double Bullet::getDirX() {
     return dirX;
 }
-
 double Bullet::setDirX(double _) {
     return dirX = _;
 }
-
 double Bullet::getDirY() {
     return dirY;
 }
-
 double Bullet::setDirY(double _) {
     return dirY = _;
 }
-
 double Bullet::getSpeed() {
     return speed;
 }
-
 double Bullet::setSpeed(double _) {
     return speed = _;
 }
