@@ -4,16 +4,19 @@
 //olcSimpleEngine.cpp is created in order to resolve object orientation issues, from now on sprites (from olc::Sprite) can be created inside other classes, independently
 //Last Edit Date: 03.02.2020
 
-#include "Manager.h"
 
+#include "Manager.h"
 /*
 #include "olcSimpleEngine.h"
 #include "olcPGEX_Graphics2D.h"
 #include "vector"
-#include "Manager.h"
-
+#include "bullet.h"
+#include "bonus.h"
+#include "Zombie.h"
 #define PI 3.14159265359
 using namespace std;
+
+
 
 
 struct Bullet{
@@ -83,9 +86,9 @@ class ShootingGame : public olc::PixelGameEngine
     double spawnCD;
 
     vector<Bullet> bullets;
-    vector<Enemy> enemies;
+    vector<Zombie> enemies;
     vector<Bonus> bonuses;
-    
+
     shared_ptr<olc::Sprite> bonusSprite;
     shared_ptr<olc::Sprite> manSprite;
     vector<shared_ptr<olc::Sprite>> levelSprites;
@@ -117,20 +120,20 @@ public:
         deadSprite = make_shared<olc::Sprite>("Sprites/Dead.png");
         zombieSprite = make_shared<olc::Sprite>("Sprites/zombie.png");
         bonusSprite = make_shared<olc::Sprite>("Sprites/firstaid.png");
-        
+
         x = ScreenWidth() / 2;
         y = ScreenHeight() / 2;
         heroSpeed = 100;
-        
+
         spawnRate = 5;
         spawnCD = 0;
-        
+
         hpmax = 100;
         hpcurr = 50;
-        
+
         gameTime = 0;
         gameEnd = false;
-        
+
         for (int i = 0; i < 7; ++i)
             levelSprites.push_back(make_shared<olc::Sprite>("Sprites/Level" + to_string(i + 1) + ".png"));
 
@@ -140,7 +143,7 @@ public:
 
     bool OnUserUpdate(float fElapsedTime) //override
     {
-      
+
         if (gameEnd) {
             DrawSprite(0, 0, deadSprite, 1);
             DrawString(ScreenWidth() / 2 - 38, ScreenHeight() / 2 -10, "GAME OVER",olc::DARK_RED);
@@ -163,8 +166,8 @@ public:
 
         gameTime += fElapsedTime;
         level = int(gameTime / 10) % 7 + 1;
-        
-        
+
+
         //ZOMBIE SPAWNS
         spawnCD -= fElapsedTime;
         if (spawnCD <= 0)
@@ -174,8 +177,8 @@ public:
             spawnCD = spawnRate;
         }
         //ZOMBIE SPAWNS
-        
-        
+
+
         //SHOOTING
         if (GetKey(olc::SPACE).bPressed)
         {
@@ -235,7 +238,7 @@ public:
                         //RANDOM BONUS CREATION
 
                         if ( rand()%5 < 1 ) {
-                        
+
                             bonuses.push_back(Bonus(enemies[j].x, enemies[j].y));
                         }
                         //RANDOM BONUS CREATION
@@ -255,7 +258,7 @@ public:
         {
             if (distance(x,y,bonuses[i].x,bonuses[i].y) <=  10)
             {
-                
+
                 if (hpcurr + 20 < hpmax)
                 {
                     hpcurr += 20;
@@ -330,7 +333,7 @@ public:
                 bullets.erase(bullets.begin());
                 i--;
             }
-            
+
 
             for (int i = 0; i < bonuses.size(); i++)
             {
@@ -339,8 +342,8 @@ public:
             }
 
             gameEnd=true;
-        
-        
+
+
         }
 
 
@@ -359,8 +362,8 @@ public:
         t.Rotate(atan2((GetMouseX()-x),(GetMouseY() - y)) - PI / 2);
         t.Translate(x, y );
         olc::GFX2D::DrawSprite(manSprite.get(), t);
-      
-        
+
+
         //CROSSHAIR
         DrawLine(GetMouseX() - 5, GetMouseY(), GetMouseX() + 5, GetMouseY(), olc::RED);
         DrawLine(GetMouseX(), GetMouseY() - 5, GetMouseX(), GetMouseY() + 5, olc::RED);
@@ -369,7 +372,7 @@ public:
         //DRAW BULLETS
         for (auto a: bullets)
             DrawCircle(a.x, a.y, 1,olc::YELLOW);
-        
+
         //DRAW ENEMIES
         for (auto a : enemies) {
             DrawSprite(a.x-12,a.y-12,zombieSprite,1);
@@ -393,18 +396,17 @@ public:
 };
 */
 
+
 int main()
 {
-    //ORIGINAL GAME
-    /*ShootingGame demo;
-    if (demo.Construct(240, 240, 3, 3))
-        demo.Start();
-        */
 
-    //MY GAME
+    //ShootingGame demo;
+    //if (demo.Construct(240, 240, 3, 3))
+    //   demo.Start();
+     //MY GAME
     Manager game;
-    if (game.Construct(240,240,3,3))
+    if (game.Construct(240, 240, 3, 3))
         game.Start();
-  
+
     return 0;
 }

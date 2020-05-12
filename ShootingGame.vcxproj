@@ -123,24 +123,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Bonus.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="bonus.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="olcSimpleEngine.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
-    <ClInclude Include="Bonus.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="bonus.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="olcPGEX_Graphics2D.h" />
     <ClInclude Include="olcSimpleEngine.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

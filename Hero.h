@@ -1,35 +1,30 @@
 #pragma once
+#include "Human.h"
 #include "Manager.h"
+#include <vector>
+#include <memory>
 using namespace std;
 
-class Hero {
+class Human;
+class Manager;
+class Sprite;
+class Bullet;
+
+class Hero : public Human {
 
 private:
-    double x;
-    double y;
-    double heroSpeed;
-    double hpmax;
-    double hpcurr;
+    Manager* pGame;
+    shared_ptr<Sprite> sprite;
 
 public:
-    Hero();
-    ~Hero();
-    std::shared_ptr<olc::Sprite> manSprite;
+    Hero(double xIn, double yIn, double speedIn, double hpMaxIn, double hpcurrIn, Manager* pIn, shared_ptr<Sprite> spIn);
 
-    bool OnUserUpdate(float fElapsedTime); //override
+    vector<shared_ptr<Bullet>> bullets;
+    void shooting();
+    void pick_bonus();
+    void draw_hero();
+    void update_hero(float fElapsedTime);
+    void hero_keep();
 
-    double getX();
-    double setX(double _);
-
-    double getY();
-    double setY(double _);
-    
-    double getHeroSpeed();
-    double setHeroSpeed(double _);
-    
-    double getHpMax();
-    double setHpMax(double _);
-    
-    double getHpCurr();
-    double setHpCurr(double _);
+    void DrawHPBar(int x, int y, int HPMax, int HPCurrent);
 };

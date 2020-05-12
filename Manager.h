@@ -1,40 +1,47 @@
 #pragma once
 #include "olcSimpleEngine.h"
 #include "olcPGEX_Graphics2D.h"
-#include "vector"
+#include <vector>
+#include <memory>
+#include "Human.h"
+#include "bullet.h"
+#include "bonus.h"
 #include "Hero.h"
-#include "Bullet.h"
-#include "Bonus.h"
-#include "Enemy.h"
-#include "Background.h"
-
+#include "Zombie.h"
+#include "Sprite.h"
 #define PI 3.14159265359
 using namespace std;
 
 
+class Human;
+class Sprite;
+class Hero;
+class Bullet;
+class Zombie;
+class Bonus;
+
 class Manager : public olc::PixelGameEngine {
 
 private:
-	int level;
+	double spawnRate;
+	double spawnCD;
 	double gameTime;
 	bool gameEnd;
+	int level;
 
-	class Hero* hero;
-	class Bullet* bullet;
-	class Bonus* bonus;
-	class Enemy* enemy;
-	class Background* frame;
+	shared_ptr<Sprite> sprite;
+	shared_ptr<Hero> pHero;
 
 public:
 	Manager();
-	~Manager();
 
-	std::shared_ptr<olc::Sprite> deadSprite;
+	vector<shared_ptr<Bonus>> bonuses;
+	vector<shared_ptr<Zombie>> enemies;
 
-	const static int WIDTH = 240;
-	const static int HEIGHT = 240;
-	
-	bool OnUserCreate();
+	bool OnUserCreate(); //override
 	bool OnUserUpdate(float fElapsedTime); //override
-	void DrawHPBar(int x, int y, int HPMax, int HPCurrent);
+	double distance(double x1, double y1, double x2, double y2);
+
+	int getLevel();
+	void setLevel(int _);
 };
