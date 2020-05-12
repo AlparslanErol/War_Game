@@ -1,8 +1,13 @@
 #pragma once
 #include "Manager.h"
+#include <vector>
+#include <memory>
+using namespace std;
 
+class Manager;
 
-class Bullet {
+class Bullet
+{
 
 private:
     double x;
@@ -12,28 +17,23 @@ private:
     double speed;
     double damage;
 
-public:
-    Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double speedIn, double damageIn);
-    ~Bullet();
-    std::vector<class Bullet> bullets;
+    Manager* pGame;
 
-    bool OnUserUpdate(float fElapsedTime); //override
+public:
+
+    Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double speedIn, double damageIn, Manager* pIn);
+
+    void draw_Bullet();
+    void bullet_move(float fElapsedTime);
 
     double getX();
-    double setX(double _);
-
     double getY();
-    double setY(double _);
-
-    double getDirX();
-    double setDirX(double _);
-
-    double getDirY();
-    double setDirY(double _);
-
-    double getSpeed();
-    double setSpeed(double _);
-
     double getDamage();
-    double setDamage(double _);
+    double get_dirX();
+    double get_dirY();
+    double getSpeed();
+
+    void setX(double _);
+    void setY(double _);
 };
+
