@@ -12,6 +12,15 @@ Bullet::Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double spee
     damage = damageIn;
 }
 
+bool Bullet::isCollide(double xIn, double yIn)
+{
+    if (distance(x, y, xIn, yIn) < 10)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Bullet::draw_Bullet()
 {
     pGame->DrawCircle(x, y, 1, olc::YELLOW);
@@ -22,38 +31,17 @@ void Bullet::bullet_move(float fElapsedTime)
     x += dirX * speed * fElapsedTime;
     y += dirY * speed * fElapsedTime;
 }
-double Bullet::getX()
+
+bool Bullet::erase()
 {
-    return x;
-}
-double Bullet::getY()
-{
-    return y;
-}
-double Bullet::getDamage()
-{
-    return damage;
-}
-double Bullet::get_dirX()
-{
-    return dirX;
-}
-double Bullet::get_dirY()
-{
-    return dirY;
+    if (x < 0 || x > pGame->ScreenWidth() || y < 0 || y > pGame->ScreenHeight())
+    {
+        return true;
+    }
+    return false;
 }
 
-double Bullet::getSpeed()
+double Bullet::distance(double x1, double y1, double x2, double y2)
 {
-    return speed;
-}
-
-void Bullet::setX(double _)
-{
-    x = _;
-}
-
-void Bullet::setY(double _)
-{
-    y = _;
+    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }

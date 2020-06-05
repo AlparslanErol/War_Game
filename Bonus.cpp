@@ -1,37 +1,11 @@
 #include"Bonus.h"
 
-Bonus::Bonus(int xIn, int yIn, Manager* pIn, shared_ptr<Sprite> spIn, shared_ptr<Hero> pHeroIn)
+Bonus::Bonus()
 {
-	pHero = pHeroIn;
-	pGame = pIn;
-	sprite = spIn;
 
-	x = xIn;
-	y = yIn;
-}
-void Bonus::draw_Bonus()
-{
-	pGame->DrawSprite(x - 10, y - 10, sprite->bonusSprite, 1);
 }
 
-bool Bonus::is_picked()
+double Bonus::distance(double x1, double y1, double x2, double y2)
 {
-    //BONUS PICK UP
-	if (pGame->distance(pHero->getX(), pHero->getY(), x, y) <= 10)
-	{
-		return true;
-	}
-    //BONUS PICK UP
-
-	return false;
-}
-
-int Bonus::getX()
-{
-	return x;
-}
-
-int Bonus::getY()
-{
-	return y;
+	return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }

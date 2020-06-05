@@ -1,5 +1,4 @@
 #pragma once
-#include "Manager.h"
 #include <vector>
 #include <memory>
 using namespace std;
@@ -10,7 +9,7 @@ class Hero;
 
 class Bonus
 {
-private:
+protected:
     int x;
     int y;
 
@@ -19,10 +18,8 @@ private:
     shared_ptr<Sprite> sprite;
 
 public:
-    Bonus(int xIn, int yIn, Manager* pIn, shared_ptr<Sprite> spIn, shared_ptr<Hero> pHeroIn);
-
-    void draw_Bonus();
-    bool is_picked();
-    int getX();
-    int getY();
+    Bonus();
+    virtual void draw_Bonus() { };
+    virtual bool is_picked() { return false; };
+    double distance(double x1, double y1, double x2, double y2);
 };

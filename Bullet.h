@@ -16,24 +16,16 @@ private:
     double dirY;
     double speed;
     double damage;
-
     Manager* pGame;
 
 public:
 
     Bullet(double xIn, double yIn, double dirXIn, double dirYIn, double speedIn, double damageIn, Manager* pIn);
 
+    bool isCollide(double xIn, double yIn);
     void draw_Bullet();
     void bullet_move(float fElapsedTime);
-
-    double getX();
-    double getY();
-    double getDamage();
-    double get_dirX();
-    double get_dirY();
-    double getSpeed();
-
-    void setX(double _);
-    void setY(double _);
+    bool erase();
+    double distance(double x1, double y1, double x2, double y2);
 };
 
