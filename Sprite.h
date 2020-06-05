@@ -12,7 +12,9 @@ public:
 	Sprite();
 	vector<shared_ptr<olc::Sprite>> levelSprites;
 	shared_ptr<olc::Sprite> zombieSprite;
+	shared_ptr<olc::Sprite> zombieSprite_1;
 	shared_ptr<olc::Sprite> deadSprite;
 	shared_ptr<olc::Sprite> bonusSprite;
+	shared_ptr<olc::Sprite> bonus1Sprite;
 	shared_ptr<olc::Sprite> manSprite;
 };

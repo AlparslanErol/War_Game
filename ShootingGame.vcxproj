@@ -123,24 +123,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Advanced_Zombie.cpp" />
     <ClCompile Include="bonus.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Hp_Kit.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="olcSimpleEngine.cpp" />
+    <ClCompile Include="Regular_Zombie.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Advanced_Zombie.h" />
     <ClInclude Include="bonus.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="Hp_Kit.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="olcPGEX_Graphics2D.h" />
     <ClInclude Include="olcSimpleEngine.h" />
+    <ClInclude Include="Regular_Zombie.h" />
+    <ClInclude Include="Shield.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>

@@ -13,21 +13,18 @@ Zombie::Zombie(double xIn, double yIn, double speedIn, double damageIn, double h
     hpmax = hpIn;
     hpcurrent = hpmax;
     attackCD = 0;
-    attackrate = 2;
+    attackrate = 4;
+    bonuses = vector<shared_ptr<Hp_Kit>>();
 }
 
-void Zombie::draw_Zombie()
+Zombie::Zombie()
 {
-    pGame->DrawSprite(x - 12, y - 12, sprite->zombieSprite, 1);
+
 }
 
-void Zombie::move_Zombie(float fElapsedTime)
+double Zombie::distance(double x1, double y1, double x2, double y2)
 {
-    double dirX = pHero->getX() - x;
-    double dirY = pHero->getY() - y;
-    double dist = sqrt((dirX * dirX) + (dirY * dirY));
-    x += dirX / dist * speed * fElapsedTime;
-    y += dirY / dist * speed * fElapsedTime;
+    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }
 
 bool Zombie::is_Killed()
@@ -39,47 +36,7 @@ bool Zombie::is_Killed()
     return false;
 }
 
-void Zombie::zombie_Attack(float fElapsedTime)
+void Zombie::hpCurrent()
 {
-    attackCD -= fElapsedTime;
-    if ((pGame->distance(x, y, pHero->getX(), pHero->getY()) <= 8) && (attackCD <= 0))
-    {
-        pHero->setHpcurrent(pHero->getHpcurrent() - damage);
-        attackCD = attackrate;
-    }
-}
-
-void Zombie::DrawHPBar(int x, int y, int HPMax, int HPCurrent)
-{
-    double ratio = (double)(HPCurrent) / (double)HPMax;
-    for (int i = x - 5; i < 5 + x; ++i)
-        if (i < x - 5 + ratio * 10)
-            pGame->DrawRect(i, y + 14, 1, 1, olc::GREEN);
-        else
-            pGame->DrawRect(i, y + 14, 1, 1, olc::RED);
-}
-
-double Zombie::getAttackCD()
-{
-    return attackCD;
-}
-
-double Zombie::getAttacrate()
-{
-    return attackrate;
-}
-
-int Zombie::getDamage()
-{
-    return damage;
-}
-
-void Zombie::setAttackCD(double _)
-{
-    attackCD = _;
-}
-
-void Zombie::setAttackrate(double _)
-{
-    attackrate = _;
+    hpcurrent -= 1;
 }

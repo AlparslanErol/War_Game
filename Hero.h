@@ -19,12 +19,16 @@ private:
 public:
     Hero(double xIn, double yIn, double speedIn, double hpMaxIn, double hpcurrIn, Manager* pIn, shared_ptr<Sprite> spIn);
 
+	void shooting();
+    void attractZombie(double* xIn, double* yIn, double speedIn, float fElapsedTimeIn);
+    bool isCollide(double xIn, double yIn);
+	void hpCurrent(double damageIn);
     vector<shared_ptr<Bullet>> bullets;
-    void shooting();
     void pick_bonus();
     void draw_hero();
     void update_hero(float fElapsedTime);
+    bool is_Killed();
     void hero_keep();
-
-    void DrawHPBar(int x, int y, int HPMax, int HPCurrent);
+    double distance(double x1, double y1, double x2, double y2);
+    void DrawHPBar();
 };

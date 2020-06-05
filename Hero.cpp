@@ -27,6 +27,28 @@ void Hero::shooting()
     //SHOOTING
 }
 
+void Hero::attractZombie(double* xIn, double* yIn, double speedIn, float fElapsedTimeIn)
+{
+    double dirX = x - *xIn;
+    double dirY = y - *yIn;
+    double dist = sqrt((dirX * dirX) + (dirY * dirY));
+    *xIn += dirX / dist * speedIn * fElapsedTimeIn;
+    *yIn += dirY / dist * speedIn * fElapsedTimeIn;
+}
+bool Hero::isCollide(double xIn, double yIn)
+{
+    if (distance(x, y, xIn, yIn) < 10)
+    {
+        return true;
+    }
+    return false;
+}
+
+void Hero::hpCurrent(double damageIn)
+{
+    hpcurrent -= damageIn;
+}
+
 void Hero::pick_bonus()
 {
     if (hpcurrent + 20 < hpmax)
@@ -42,7 +64,7 @@ void Hero::pick_bonus()
 void Hero::draw_hero()
 {
     pGame->Clear(olc::BLACK);
-    pGame->DrawSprite(0, 0, sprite->levelSprites[pGame->getLevel() - 1], 1);
+    pGame->DrawSprite(0, 0, sprite->levelSprites[pGame->Level()], 1);
     pGame->SetPixelMode(olc::Pixel::ALPHA);
     olc::GFX2D::Transform2D t;
     t.Translate(-sprite->manSprite->width / 2, -sprite->manSprite->height / 2);
@@ -65,6 +87,15 @@ void Hero::update_hero(float fElapsedTime)
     //UPDATE VARIABLES
 }
 
+bool Hero::is_Killed()
+{
+    if (hpcurrent <= 0)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Hero::hero_keep()
 {
     //KEEP HERO IN WINDOW
@@ -75,9 +106,14 @@ void Hero::hero_keep()
     //KEEP HERO IN WINDOW
 }
 
-void Hero::DrawHPBar(int x, int y, int HPMax, int HPCurrent)
+double Hero::distance(double x1, double y1, double x2, double y2)
 {
-    double ratio = (double)(HPCurrent) / (double)HPMax;
+    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+}
+
+void Hero::DrawHPBar()
+{
+    double ratio = (double)(hpcurrent) / (double)hpmax;
     for (int i = x - 5; i < 5 + x; ++i)
         if (i < x - 5 + ratio * 10)
             pGame->DrawRect(i, y + 14, 1, 1, olc::GREEN);
